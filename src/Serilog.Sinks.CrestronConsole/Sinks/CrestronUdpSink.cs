@@ -1,4 +1,5 @@
-﻿using Serilog.Core;
+﻿using Crestron.SimplSharp.CrestronSockets;
+using Serilog.Core;
 using Serilog.Events;
 using Serilog.Formatting;
 using Serilog.Sinks.Crestron.Themes;
@@ -8,34 +9,40 @@ using System.Text;
 
 namespace Serilog.Sinks.Crestron
 {
-    public class CrestronConsoleSink : ILogEventSink
+    public class CrestronUdpSink : ILogEventSink
     {
         readonly ConsoleTheme _theme;
         readonly ITextFormatter _formatter;
         readonly object _syncRoot;
 
-        private CrestronConsoleTextWriter output;
+        private CrestronUdpTextWriter output;
         private StringWriter buffer;
+
+        private UDPServer udpServer;
 
         const int DefaultWriteBufferCapacity = 256;
 
-        static CrestronConsoleSink()
+        static CrestronUdpSink()
         {
             // Disable this for now, we can add it back in if we want this console sink to continue to work
             // When running outside a Crestron appliance
             // WindowsConsole.EnableVirtualTerminalProcessing();  
         }
 
-        public CrestronConsoleSink(
+        public CrestronUdpSink(
             ConsoleTheme theme,
             ITextFormatter formatter,
-            object syncRoot)
+            object syncRoot,
+            int portNumber)
         {
             _theme = theme ?? throw new ArgumentNullException(nameof(theme));
             _formatter = formatter;
             _syncRoot = syncRoot ?? throw new ArgumentNullException(nameof(syncRoot));
 
-            output = new CrestronConsoleTextWriter();
+            udpServer = new UDPServer("0.0.0.0", portNumber, 1000);
+            udpServer.EnableUDPServer();
+
+            output = new CrestronUdpTextWriter(udpServer);
             buffer = new StringWriter(new StringBuilder(DefaultWriteBufferCapacity));
         }
 

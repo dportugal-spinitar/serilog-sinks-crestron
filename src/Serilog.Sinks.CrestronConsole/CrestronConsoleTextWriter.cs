@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Crestron.SimplSharp;
+using System;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-using Crestron.SimplSharp;
-
-namespace Serilog.Sinks.CrestronSystemConsole
+namespace Serilog.Sinks.Crestron
 {
     public class CrestronConsoleTextWriter : TextWriter
     {
-        
+
         public CrestronConsoleTextWriter()
         {
         }

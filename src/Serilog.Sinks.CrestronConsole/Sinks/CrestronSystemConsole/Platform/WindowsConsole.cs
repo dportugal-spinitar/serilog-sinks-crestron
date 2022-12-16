@@ -15,7 +15,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Serilog.Sinks.CrestronSystemConsole.Platform
+namespace Serilog.Sinks.Crestron.Platform
 {
     static class WindowsConsole
     {

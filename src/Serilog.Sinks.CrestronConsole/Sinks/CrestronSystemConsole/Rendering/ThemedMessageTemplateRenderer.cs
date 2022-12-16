@@ -12,15 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using Serilog.Events;
+using Serilog.Parsing;
+using Serilog.Sinks.Crestron.Formatting;
+using Serilog.Sinks.Crestron.Themes;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Serilog.Events;
-using Serilog.Parsing;
-using Serilog.Sinks.CrestronSystemConsole.Formatting;
-using Serilog.Sinks.CrestronSystemConsole.Themes;
 
-namespace Serilog.Sinks.CrestronSystemConsole.Rendering
+namespace Serilog.Sinks.Crestron.Rendering
 {
     class ThemedMessageTemplateRenderer
     {

@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System.IO;
 using Serilog.Events;
-using Serilog.Sinks.CrestronSystemConsole.Themes;
+using Serilog.Sinks.Crestron.Themes;
+using System.IO;
 
-namespace Serilog.Sinks.CrestronSystemConsole.Output
+namespace Serilog.Sinks.Crestron.Output
 {
     class TextTokenRenderer : OutputTemplateTokenRenderer
     {

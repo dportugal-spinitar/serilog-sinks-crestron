@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace Serilog.Sinks.CrestronSystemConsole.Rendering
+namespace Serilog.Sinks.Crestron.Rendering
 {
     static class Casing
     {

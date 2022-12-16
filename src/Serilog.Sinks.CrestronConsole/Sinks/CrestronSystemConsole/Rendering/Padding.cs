@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System.IO;
 using Serilog.Parsing;
+using System.IO;
 
-namespace Serilog.Sinks.CrestronSystemConsole.Rendering
+namespace Serilog.Sinks.Crestron.Rendering
 {
     static class Padding
     {

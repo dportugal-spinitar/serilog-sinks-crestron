@@ -12,14 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System;
-using System.IO;
 using Serilog.Events;
 using Serilog.Parsing;
-using Serilog.Sinks.CrestronSystemConsole.Rendering;
-using Serilog.Sinks.CrestronSystemConsole.Themes;
+using Serilog.Sinks.Crestron.Rendering;
+using Serilog.Sinks.Crestron.Themes;
+using System;
+using System.IO;
 
-namespace Serilog.Sinks.CrestronSystemConsole.Output
+namespace Serilog.Sinks.Crestron.Output
 {
     class EventPropertyTokenRenderer : OutputTemplateTokenRenderer
     {

@@ -14,7 +14,7 @@
 
 using System.Collections.Generic;
 
-namespace Serilog.Sinks.CrestronSystemConsole.Themes
+namespace Serilog.Sinks.Crestron.Themes
 {
     static class AnsiConsoleThemes
     {

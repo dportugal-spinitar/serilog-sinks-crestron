@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace Serilog.Sinks.CrestronSystemConsole.Themes
+namespace Serilog.Sinks.Crestron.Themes
 {
     static class AnsiEscapeSequence
     {

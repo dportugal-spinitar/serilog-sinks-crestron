@@ -14,7 +14,7 @@
 
 using System;
 
-namespace Serilog.Sinks.CrestronSystemConsole.Themes
+namespace Serilog.Sinks.Crestron.Themes
 {
     /// <summary>
     /// Styling applied using the <see cref="System.ConsoleColor"/> enumeration.

@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0AC7FA22-D23
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{DBCB6E66-7488-44D0-B204-6011FC7869CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serilog.Sinks.CrestronConsole", "src\Serilog.Sinks.CrestronConsole\Serilog.Sinks.CrestronConsole.csproj", "{CBC44088-953D-4B49-A182-3C00F83A9356}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serilog.Sinks.Crestron", "src\Serilog.Sinks.CrestronConsole\Serilog.Sinks.Crestron.csproj", "{CBC44088-953D-4B49-A182-3C00F83A9356}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serilog.Sinks.CrestronConsole.Tests", "test\Serilog.Sinks.CrestronConsole.Tests\Serilog.Sinks.CrestronConsole.Tests.csproj", "{2E9345FF-6E12-40E2-991D-844B07A9E63B}"
 EndProject

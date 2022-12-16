@@ -14,7 +14,7 @@
 
 using System.IO;
 
-namespace Serilog.Sinks.CrestronSystemConsole.Themes
+namespace Serilog.Sinks.Crestron.Themes
 {
     /// <summary>
     /// The base class for styled terminal output.

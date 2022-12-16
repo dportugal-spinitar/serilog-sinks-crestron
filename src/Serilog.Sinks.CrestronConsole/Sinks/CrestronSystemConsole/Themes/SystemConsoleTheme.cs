@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Serilog.Sinks.CrestronSystemConsole.Themes
+namespace Serilog.Sinks.Crestron.Themes
 {
     /// <summary>
     /// A console theme using the styling facilities of the <see cref="System.Console"/> class. Recommended

@@ -143,9 +143,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Serilog.Sinks.CrestronConsole\Serilog.Sinks.CrestronConsole.csproj">
+    <ProjectReference Include="..\..\src\Serilog.Sinks.CrestronConsole\Serilog.Sinks.Crestron.csproj">
       <Project>{cbc44088-953d-4b49-a182-3c00f83a9356}</Project>
-      <Name>Serilog.Sinks.CrestronConsole</Name>
+      <Name>Serilog.Sinks.Crestron</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

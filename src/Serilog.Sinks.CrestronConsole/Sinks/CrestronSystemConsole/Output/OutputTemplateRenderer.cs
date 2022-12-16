@@ -12,16 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System;
-using System.Collections.Generic;
-using System.IO;
 using Serilog.Events;
 using Serilog.Formatting;
 using Serilog.Formatting.Display;
 using Serilog.Parsing;
-using Serilog.Sinks.CrestronSystemConsole.Themes;
+using Serilog.Sinks.Crestron.Themes;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
-namespace Serilog.Sinks.CrestronSystemConsole.Output
+namespace Serilog.Sinks.Crestron.Output
 {
     class OutputTemplateRenderer : ITextFormatter
     {

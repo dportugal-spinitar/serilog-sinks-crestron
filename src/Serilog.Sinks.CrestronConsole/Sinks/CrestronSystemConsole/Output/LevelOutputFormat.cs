@@ -13,9 +13,9 @@
 // limitations under the License.
 
 using Serilog.Events;
-using Serilog.Sinks.CrestronSystemConsole.Rendering;
+using Serilog.Sinks.Crestron.Rendering;
 
-namespace Serilog.Sinks.CrestronSystemConsole.Output
+namespace Serilog.Sinks.Crestron.Output
 {
     /// <summary>
     /// Implements the {Level} element.

@@ -14,7 +14,7 @@
 
 using System.IO;
 
-namespace Serilog.Sinks.CrestronSystemConsole.Formatting
+namespace Serilog.Sinks.Crestron.Formatting
 {
     struct ThemedValueFormatterState
     {

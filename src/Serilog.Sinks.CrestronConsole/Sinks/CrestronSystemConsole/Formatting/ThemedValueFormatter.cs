@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System;
-using System.IO;
 using Serilog.Data;
 using Serilog.Events;
-using Serilog.Sinks.CrestronSystemConsole.Themes;
+using Serilog.Sinks.Crestron.Themes;
+using System;
+using System.IO;
 
-namespace Serilog.Sinks.CrestronSystemConsole.Formatting
+namespace Serilog.Sinks.Crestron.Formatting
 {
     abstract class ThemedValueFormatter : LogEventPropertyValueVisitor<ThemedValueFormatterState, int>
     {

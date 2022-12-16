@@ -15,7 +15,7 @@
 using System;
 using System.ComponentModel;
 
-namespace Serilog.Sinks.CrestronSystemConsole.Themes
+namespace Serilog.Sinks.Crestron.Themes
 {
     /// <summary>
     /// Elements styled by a console theme.

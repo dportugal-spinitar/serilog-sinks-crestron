@@ -15,7 +15,7 @@
 using System;
 using System.IO;
 
-namespace Serilog.Sinks.CrestronSystemConsole.Themes
+namespace Serilog.Sinks.Crestron.Themes
 {
     struct StyleReset : IDisposable
     {

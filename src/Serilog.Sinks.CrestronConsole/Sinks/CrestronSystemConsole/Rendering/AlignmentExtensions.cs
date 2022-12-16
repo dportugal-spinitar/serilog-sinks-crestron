@@ -14,7 +14,7 @@
 
 using Serilog.Parsing;
 
-namespace Serilog.Sinks.CrestronSystemConsole.Rendering
+namespace Serilog.Sinks.Crestron.Rendering
 {
     static class AlignmentExtensions
     {

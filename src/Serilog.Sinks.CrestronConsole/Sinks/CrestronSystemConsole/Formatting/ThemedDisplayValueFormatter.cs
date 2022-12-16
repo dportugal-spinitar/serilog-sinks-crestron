@@ -12,15 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System;
-using System.IO;
 using Serilog.Events;
 using Serilog.Formatting.Json;
-using Serilog.Sinks.CrestronSystemConsole.Themes;
+using Serilog.Sinks.Crestron.Themes;
+using System;
+using System.IO;
 
 #nullable enable // Important!
 
-namespace Serilog.Sinks.CrestronSystemConsole.Formatting
+namespace Serilog.Sinks.Crestron.Formatting
 {
     class ThemedDisplayValueFormatter : ThemedValueFormatter
     {
