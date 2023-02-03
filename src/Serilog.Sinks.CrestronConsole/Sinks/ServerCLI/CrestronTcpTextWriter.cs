@@ -1,5 +1,4 @@
-﻿using Crestron.SimplSharp.CrestronSockets;
-using System;
+﻿using System;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -15,10 +14,10 @@ namespace Serilog.Sinks.Crestron
             _tcpServer = tcpServer;
         }
 
-        public CrestronTcpTextWriter(Server TcpServer, IFormatProvider formatProvider) 
+        public CrestronTcpTextWriter(Server tcpServer, IFormatProvider formatProvider) 
             : base(formatProvider)
         {
-            _tcpServer = TcpServer;
+            _tcpServer = tcpServer;
         }
 
         public override Encoding Encoding

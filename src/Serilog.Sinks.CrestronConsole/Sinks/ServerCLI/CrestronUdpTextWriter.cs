@@ -3,22 +3,20 @@ using System;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
-using CrestronTcpServerCLI;
 
 namespace Serilog.Sinks.Crestron
 {
-    public class CrestronTcpTextWriter : TextWriter
+    public class CrestronUdpTextWriter : TextWriter
     {
-        private readonly Server _tcpServer;
-        public CrestronTcpTextWriter(Server tcpServer)
+        private readonly UDPServer _UdpServer;
+        public CrestronUdpTextWriter(UDPServer UdpServer)
         {
-            _tcpServer = tcpServer;
+            _UdpServer = UdpServer;
         }
 
-        public CrestronTcpTextWriter(Server TcpServer, IFormatProvider formatProvider) 
-            : base(formatProvider)
+        public CrestronUdpTextWriter(UDPServer UdpServer, IFormatProvider formatProvider) : base(formatProvider)
         {
-            _tcpServer = TcpServer;
+            _UdpServer = UdpServer;
         }
 
         public override Encoding Encoding
@@ -36,26 +34,26 @@ namespace Serilog.Sinks.Crestron
             if (FormatProvider != null)
             {
                 var msg = Encoding.UTF8.GetBytes(ReplaceLF(value.ToString(FormatProvider)));
-                _tcpServer.SendToAllClients(msg);
-
+                _UdpServer.SendData(msg, msg.Length);
             }
             else
             {
                 var msg = Encoding.UTF8.GetBytes(ReplaceLF(value.ToString()));
-                _tcpServer.SendToAllClients(msg);                
+                _UdpServer.SendData(msg, msg.Length);
             }
-        }        
+        }
 
         public override void Write(string value)
         {
             if (FormatProvider != null)
             {
-                var msg = ReplaceLF(value.ToString(FormatProvider));
-                _tcpServer.SendToAllClients(msg);
+                var msg = Encoding.UTF8.GetBytes(ReplaceLF(value.ToString(FormatProvider)));
+                _UdpServer.SendData(msg, msg.Length);
             }
             else
             {
-                _tcpServer.SendToAllClients(value);
+                var msg = Encoding.UTF8.GetBytes(ReplaceLF(value.ToString()));
+                _UdpServer.SendData(msg, msg.Length);
             }
         }
 

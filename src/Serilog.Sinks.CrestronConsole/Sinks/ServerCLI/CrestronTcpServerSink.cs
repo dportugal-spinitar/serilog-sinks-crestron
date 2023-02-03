@@ -1,4 +1,4 @@
-﻿using Crestron.SimplSharp;
+﻿using CrestronTcpServerCLI;
 using Serilog.Core;
 using Serilog.Events;
 using Serilog.Formatting;
@@ -6,7 +6,6 @@ using Serilog.Sinks.Crestron.Themes;
 using System;
 using System.IO;
 using System.Text;
-using CrestronTcpServerCLI;
 
 namespace Serilog.Sinks.Crestron
 {
@@ -39,7 +38,7 @@ namespace Serilog.Sinks.Crestron
         {
             _theme = theme ?? throw new ArgumentNullException(nameof(theme));
             _formatter = formatter;
-            _syncRoot = syncRoot ?? throw new ArgumentNullException(nameof(syncRoot));            
+            _syncRoot = syncRoot ?? throw new ArgumentNullException(nameof(syncRoot));
             tcpServer = new Server(portNumber: port);            
             output = new CrestronTcpTextWriter(tcpServer);
             buffer = new StringWriter(new StringBuilder(DefaultWriteBufferCapacity));

@@ -38,7 +38,7 @@ namespace Serilog
         /// <returns>Configuration object allowing method chaining.</returns>
         /// <exception cref="ArgumentNullException">When <paramref name="sinkConfiguration"/> is <code>null</code></exception>
         /// <exception cref="ArgumentNullException">When <paramref name="outputTemplate"/> is <code>null</code></exception>
-        public static LoggerConfiguration CrestronTcpServer(
+        public static LoggerConfiguration CrestronTcpServerCLI(
             this LoggerSinkConfiguration sinkConfiguration,
             LogEventLevel restrictedToMinimumLevel = LevelAlias.Minimum,
             string outputTemplate = DefaultConsoleOutputTemplate,
@@ -80,7 +80,7 @@ namespace Serilog
         /// <returns>Configuration object allowing method chaining.</returns>
         /// <exception cref="ArgumentNullException">When <paramref name="sinkConfiguration"/> is <code>null</code></exception>
         /// <exception cref="ArgumentNullException">When <paramref name="outputTemplate"/> is <code>null</code></exception>
-        public static LoggerConfiguration CrestronTcpServer(
+        public static LoggerConfiguration CrestronTcpServerCLI(
             this LoggerSinkConfiguration sinkConfiguration,
             ITextFormatter formatter,
             LogEventLevel restrictedToMinimumLevel = LevelAlias.Minimum,
@@ -97,14 +97,14 @@ namespace Serilog
             return sinkConfiguration.Sink(new CrestronTcpServerSink(ConsoleTheme.None, formatter, syncRoot, portNumber), restrictedToMinimumLevel, levelSwitch);
         }
 
-        public static LoggerConfiguration CrestronTcpServer(
+        public static LoggerConfiguration Crestron(
             this LoggerSinkConfiguration sinkConfiguration,
             CrestronTcpServerSink ServerSink)
         {
             if (sinkConfiguration is null) throw new ArgumentNullException(nameof(sinkConfiguration));         
             return sinkConfiguration.Sink(ServerSink);
         }
-        public static LoggerConfiguration CrestronTcpServer(
+        public static LoggerConfiguration CrestronTcpServerCLI(
             this LoggerSinkConfiguration sinkConfiguration,
             ITextFormatter formatter,
             CrestronTcpServerCLI.Server server,
@@ -114,7 +114,7 @@ namespace Serilog
             object? syncRoot = null)
         {
             if (sinkConfiguration is null) throw new ArgumentNullException(nameof(sinkConfiguration));
-
+            syncRoot ??= DefaultSyncRoot;
             return sinkConfiguration.Sink(
                 new CrestronTcpServerSink(
                     ConsoleTheme.None, 
@@ -123,38 +123,7 @@ namespace Serilog
                     server), 
                 restrictedToMinimumLevel, 
                 levelSwitch);
-        }
-    
-        public static LoggerConfiguration CrestronTcpServerWithFilters(
-            this LoggerSinkConfiguration sinkConfiguration,
-            CrestronTcpServerSinkWithFilters serverSink)
-        {
-            if (sinkConfiguration is null) throw new ArgumentNullException(nameof(sinkConfiguration));
-            return sinkConfiguration.Sink(serverSink);
-        }
-
-        public static LoggerConfiguration CrestronTcpServerWithFilters(
-            this LoggerSinkConfiguration sinkConfiguration,
-            ITextFormatter formatter,
-            CrestronTcpServerCLI.Server server,
-            LogEventLevel restrictedToMinimumLevel = LevelAlias.Minimum,
-            string outputTemplate = DefaultConsoleOutputTemplate,
-            LoggingLevelSwitch? levelSwitch = null,
-            object? syncRoot = null)
-        {
-            if (sinkConfiguration is null) throw new ArgumentNullException(nameof(sinkConfiguration));
-
-            return sinkConfiguration.Sink(
-                new CrestronTcpServerSinkWithFilters(
-                    Serilog.
-                    formatter,
-                    syncRoot,
-                    server),
-                restrictedToMinimumLevel,
-                levelSwitch);
-        }
-
-
+        }           
     }
 }
 

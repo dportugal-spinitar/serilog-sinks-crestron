@@ -1,4 +1,4 @@
-﻿using Crestron.SimplSharp;
+﻿using Crestron.SimplSharp.CrestronSockets;
 using Serilog.Core;
 using Serilog.Events;
 using Serilog.Formatting;
@@ -6,62 +6,48 @@ using Serilog.Sinks.Crestron.Themes;
 using System;
 using System.IO;
 using System.Text;
-using CrestronTcpServerCLI;
 
 namespace Serilog.Sinks.Crestron
 {
-
-    public class CrestronTcpServerSink : ILogEventSink
+    public class CrestronUdpSink : ILogEventSink
     {
-        protected readonly ConsoleTheme _theme;
-        protected readonly ITextFormatter _formatter;
-        protected readonly object _syncRoot;
+        readonly ConsoleTheme _theme;
+        readonly ITextFormatter _formatter;
+        readonly object _syncRoot;
 
-        protected readonly CrestronTcpTextWriter output;
-        protected readonly StringWriter buffer;
+        private CrestronUdpTextWriter output;
+        private StringWriter buffer;
 
-        protected readonly CrestronTcpServerCLI.Server tcpServer;        
+        private UDPServer udpServer;
 
-        protected const int DefaultWriteBufferCapacity = 512;        
+        const int DefaultWriteBufferCapacity = 256;
 
-        static CrestronTcpServerSink()
+        static CrestronUdpSink()
         {
             // Disable this for now, we can add it back in if we want this console sink to continue to work
             // When running outside a Crestron appliance
             // WindowsConsole.EnableVirtualTerminalProcessing();  
         }
 
-        public CrestronTcpServerSink(
+        public CrestronUdpSink(
             ConsoleTheme theme,
             ITextFormatter formatter,
             object syncRoot,
-            int port)
-        {
-            _theme = theme ?? throw new ArgumentNullException(nameof(theme));
-            _formatter = formatter;
-            _syncRoot = syncRoot ?? throw new ArgumentNullException(nameof(syncRoot));            
-            tcpServer = new Server(portNumber: port);            
-            output = new CrestronTcpTextWriter(tcpServer);
-            buffer = new StringWriter(new StringBuilder(DefaultWriteBufferCapacity));
-            tcpServer.Enable();
-        }
-        public CrestronTcpServerSink(
-            ConsoleTheme theme,
-            ITextFormatter formatter,
-            object syncRoot,
-            CrestronTcpServerCLI.Server server)
+            int portNumber)
         {
             _theme = theme ?? throw new ArgumentNullException(nameof(theme));
             _formatter = formatter;
             _syncRoot = syncRoot ?? throw new ArgumentNullException(nameof(syncRoot));
-            tcpServer = server;
-            output = new CrestronTcpTextWriter(tcpServer);
+
+            udpServer = new UDPServer("0.0.0.0", portNumber, 1000);
+            udpServer.EnableUDPServer();
+
+            output = new CrestronUdpTextWriter(udpServer);
             buffer = new StringWriter(new StringBuilder(DefaultWriteBufferCapacity));
-            tcpServer.Enable();
         }
 
         public void Emit(LogEvent logEvent)
-        {            
+        {
             // ANSI escape codes can be pre-rendered into a buffer; however, if we're on Windows and
             // using its console coloring APIs, the color switches would happen during the off-screen
             // buffered write here and have no effect when the line is actually written out.
